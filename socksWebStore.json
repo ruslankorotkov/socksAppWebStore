@@ -1,0 +1,64 @@
+[
+  {
+    "socks": "носки",
+    "colors": [
+      {
+        "color": "чёрный",
+        "measure": "цвет"
+      },
+      {
+        "color": "красный",
+        "measure": "цвет"
+      },
+      {
+        "color": "жёлтый",
+        "measure": "цвет"
+      },
+      {
+        "color": "синий",
+        "measure": "цвет"
+      }
+    ],
+    "sizes": [
+      {
+        "size": 36.0,
+        "measure": "Размер"
+      },
+      {
+        "size": 36.5,
+        "measure": "Размер"
+      },
+      {
+        "size": 37.0,
+        "measure": "Размер"
+      },
+      {
+        "size": 37.5,
+        "measure": "Размер"
+      }
+    ],
+    "cottonPart": [
+      {
+        "cotton": 30,
+        "measure": "процентов"
+      },
+      {
+        "cotton": 18,
+        "measure": "процентов"
+      },
+      {
+        "cotton": 42,
+        "measure": "процентов"
+      },
+      {
+        "cotton": 100,
+        "measure": "процентов"
+      }
+    ],
+    "quantity": {
+      "number": "количество пар носков на складе",
+      "cotton": 25,
+      "measure": "шт."
+    }
+  }
+]
