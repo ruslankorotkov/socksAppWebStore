@@ -12,4 +12,5 @@ public interface SocksService {
     int reject(SocksBatch socksBatch);
 
     int getCount(Color color, Size size, int cottonMin, int cottonMax);
+
 }

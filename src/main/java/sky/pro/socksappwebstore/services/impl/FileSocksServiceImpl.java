@@ -6,7 +6,7 @@ import sky.pro.socksappwebstore.model.SocksBatch;
 import sky.pro.socksappwebstore.services.FileSocksService;
 
 import java.util.HashMap;
-import java.util.Map;
+
 @Repository
 public class FileSocksServiceImpl implements FileSocksService {
     private HashMap<Socks, Integer> socksMap = new HashMap<>();
@@ -39,7 +39,7 @@ public class FileSocksServiceImpl implements FileSocksService {
     }
 
     @Override
-    public Map<Socks, Integer> getAll() {
+    public HashMap<Socks, Integer> getAll() {
         return socksMap;
     }
 }

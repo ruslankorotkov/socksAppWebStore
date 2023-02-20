@@ -6,9 +6,9 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Socks {
     private Size size;
     private Color color;
     private int cottonPart;
-    private int quantity;
 }

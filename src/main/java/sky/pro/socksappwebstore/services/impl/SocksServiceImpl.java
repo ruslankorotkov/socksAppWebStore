@@ -22,43 +22,42 @@ public class SocksServiceImpl implements SocksService {
 
     @Override
     public void accept(SocksBatch socksBatch) {
-//        if(validationService.validate(socksBatch)){
-//            throw new ValidationException("Ошибка валидации сохранения носков");
-//        }
+        if (validationService.validate(socksBatch)) {
+            throw new ValidationException("Ошибка валидации сохранения носков");
+        }
         fileSocksService.save(socksBatch);
 
     }
 
     @Override
     public int issuence(SocksBatch socksBatch) {
-//        if(validationService.validate(socksBatch)){
-//
-//            throw new ValidationException("Ошибка валидации удаления носков");
-//        }
+        if (validationService.validate(socksBatch)) {
+
+            throw new ValidationException("Ошибка валидации удаления носков");
+        }
         return fileSocksService.remove(socksBatch);
     }
 
     @Override
     public int reject(SocksBatch socksBatch) {
-//        if(validationService.validate(socksBatch)){
-//            throw new ValidationException("Ошибка валидации удаления носков");
-//        }
+        if (validationService.validate(socksBatch)) {
+            throw new ValidationException("Ошибка валидации удаления носков");
+        }
         return fileSocksService.remove(socksBatch);
     }
 
     @Override
     public int getCount(Color color, Size size, int cottonMin, int cottonMax) {
-//        if(validationService.validate(color,size,cottonMin,cottonMax)){
-//            throw new ValidationException("Ошибка валидации параметров: цвет, размер, содержание хлопка в носках");
-//        }
-        Map<Socks, Integer> socksMap = fileSocksService.getAll();
+        if (validationService.validate(color, size, cottonMin, cottonMax)) {
+            throw new ValidationException("Ошибка валидации параметров: цвет, размер, содержание хлопка в носках");
+        }
+        HashMap<Socks, Integer> socksMap = fileSocksService.getAll();
         for (Map.Entry<Socks, Integer> element : socksMap.entrySet()) {
             Socks socks = element.getKey();
             if (socks.getColor().equals(color)
                     && socks.getSize().equals(size)
-                    && socks.getCottonPart() <= cottonMax
-                    && socks.getCottonPart() >= cottonMin) ;
-            {
+                    && socks.getCottonPart() >= cottonMin
+                    && socks.getCottonPart() <= cottonMax) {
                 return element.getValue();
             }
         }

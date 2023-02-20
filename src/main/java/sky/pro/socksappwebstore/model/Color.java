@@ -17,5 +17,5 @@ public enum Color {
     GRAY,
     TERRACOTTA,
     COQUELICOT,
-    FOLLY;
+    FOLLY
 }
