@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CottonPart {
-    private Integer cottonPart;
-    private CottonPartMeasure cottonPartMeasure;
+public class SocksBatch {
+    private Socks socks;
+    private int totalQuantity;
 }
