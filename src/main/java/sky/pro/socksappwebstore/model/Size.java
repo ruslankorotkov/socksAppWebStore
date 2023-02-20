@@ -1,32 +1,14 @@
 package sky.pro.socksappwebstore.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
 public enum Size {
-        S(36.0,37.5),
-        M(38.0,40.0),
-        L(41.0,43.0),
-        XL(44.0,46.0),
-        XXL(47.0,48.0);
-        private final Double maxSize;
-        private final Double minSize;
-
-        public Double getMaxSize() {
-            return maxSize;
-        }
-
-        public Double getMinSize() {
-            return minSize;
-        }
-
-        Size(Double maxSize, Double minSize) {
-            this.maxSize = maxSize;
-            this.minSize = minSize;
-        }
-
-        @Override
-        public String toString() {
-            return "Size{" +
-                    "maxSize=" + maxSize +
-                    ", minSize=" + minSize +
-                    '}';
-        }
+        S36_37,
+        M38_40,
+        L41_43,
+        XL44_46,
+        XXL47_48;
     }

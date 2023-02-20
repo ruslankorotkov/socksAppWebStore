@@ -12,9 +12,8 @@ public class ValidationServiceImpl implements ValidationService {
     public boolean validate(SocksBatch socksBatch) {
         return socksBatch.getSocks() != null
                 && socksBatch.getTotalQuantity() > 0
-                && socksBatch.getSocks().getColor() == null
-                && socksBatch.getSocks().getSize() == null
-                && checkCotton(socksBatch.getSocks().getCottonPart(),socksBatch.getSocks().getCottonPart());
+                && socksBatch.getSocks().getColor() != null
+                && socksBatch.getSocks().getSize() != null;
     }
 
     @Override
