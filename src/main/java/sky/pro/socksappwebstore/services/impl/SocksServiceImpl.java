@@ -22,27 +22,20 @@ public class SocksServiceImpl implements SocksService {
 
     @Override
     public void accept(SocksBatch socksBatch) {
-        if (validationService.validate(socksBatch)) {
-            throw new ValidationException("Ошибка валидации сохранения носков");
-        }
+        validationService.validate(socksBatch);
         fileSocksService.save(socksBatch);
 
     }
 
     @Override
     public int issuence(SocksBatch socksBatch) {
-        if (validationService.validate(socksBatch)) {
-
-            throw new ValidationException("Ошибка валидации удаления носков");
-        }
+        validationService.validate(socksBatch);
         return fileSocksService.remove(socksBatch);
     }
 
     @Override
     public int reject(SocksBatch socksBatch) {
-        if (validationService.validate(socksBatch)) {
-            throw new ValidationException("Ошибка валидации удаления носков");
-        }
+        validationService.validate(socksBatch);
         return fileSocksService.remove(socksBatch);
     }
 
