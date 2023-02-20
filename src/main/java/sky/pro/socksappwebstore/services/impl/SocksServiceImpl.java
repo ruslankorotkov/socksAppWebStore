@@ -17,6 +17,7 @@ import java.util.Map;
 @Service
 @AllArgsConstructor
 public class SocksServiceImpl implements SocksService {
+
     private final FileSocksService fileSocksService;
     private final ValidationService validationService;
 

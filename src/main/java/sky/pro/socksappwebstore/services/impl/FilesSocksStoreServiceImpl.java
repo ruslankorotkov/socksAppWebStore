@@ -43,5 +43,6 @@ public class FilesSocksStoreServiceImpl implements FilesSocksStoreService {
     @Override
     public File getAllSocksFile() {
         return null;
+
     }
 }

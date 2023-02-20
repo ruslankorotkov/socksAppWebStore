@@ -10,6 +10,7 @@ import sky.pro.socksappwebstore.services.ValidationService;
 
 @Service
 public class ValidationServiceImpl implements ValidationService {
+
     @Override
     public boolean validate(SocksBatch socksBatch) {
         try {

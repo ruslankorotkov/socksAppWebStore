@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class SocksBatch {
     private Socks socks;
     private Integer totalQuantity;
+
 }

@@ -42,4 +42,5 @@ public class FileSocksServiceImpl implements FileSocksService {
     public HashMap<Socks, Integer> getAll() {
         return socksMap;
     }
+
 }

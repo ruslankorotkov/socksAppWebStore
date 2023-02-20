@@ -11,4 +11,5 @@ public interface FileSocksService {
     int remove(SocksBatch socksBatch);
 
     HashMap<Socks, Integer> getAll();
+
 }

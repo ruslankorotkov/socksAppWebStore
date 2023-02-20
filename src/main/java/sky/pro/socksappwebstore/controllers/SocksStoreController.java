@@ -106,5 +106,6 @@ public class SocksStoreController {
     @GetMapping("/allSocks")
     public ResponseEntity<HashMap<Socks, Integer>> getAll() {
         return ResponseEntity.ok(fileSocksService.getAll());
+
     }
 }

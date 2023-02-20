@@ -8,11 +8,15 @@ public interface FilesSocksStoreService {
     String readFromFile();
 
     boolean deleteFile();
+
     boolean saveToAllSocksFile(String json);
 
     String readFromAllSocksFile();
 
     boolean deleteAllSocksFile();
+
     File getSocksFile();
+
     File getAllSocksFile();
+
 }
