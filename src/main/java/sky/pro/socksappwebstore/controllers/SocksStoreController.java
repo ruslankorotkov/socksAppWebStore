@@ -27,13 +27,11 @@ public class SocksStoreController {
 
 
     @ApiResponses(value = {@ApiResponse(responseCode = "200",
-            description = "Всё хорошо, запрос выполнился"),
-            @ApiResponse(responseCode = "404",
-                    description = "URL неверный или такого действия нет в веб-приложении"),
+            description = "удалось добавить приход"),
             @ApiResponse(responseCode = "500",
-                    description = "Во время выполнения запроса произошла ошибка на сервере"),
+                    description = "произошла ошибка, не зависящая от вызывающей стороны"),
             @ApiResponse(responseCode = "400",
-                    description = "Есть ошибка в параметрах запроса")})
+                    description = "параметры запроса отсутствуют или имеют некорректный формат")})
     @Operation(method = "на склад можно добавить новый товар", summary = "на склад можно добавить новый товар",
             description = "на склад можно добавить новый товар")
     @PostMapping
@@ -43,13 +41,11 @@ public class SocksStoreController {
     }
 
     @ApiResponses(value = {@ApiResponse(responseCode = "200",
-            description = "Всё хорошо, запрос выполнился"),
-            @ApiResponse(responseCode = "404",
-                    description = "URL неверный или такого действия нет в веб-приложении"),
+            description = " удалось произвести отпуск носков со склада"),
             @ApiResponse(responseCode = "500",
-                    description = "Во время выполнения запроса произошла ошибка на сервере"),
+                    description = "произошла ошибка, не зависящая от вызывающей стороны"),
             @ApiResponse(responseCode = "400",
-                    description = "Есть ошибка в параметрах запроса")})
+                    description = "товара нет на складе в нужном количестве или параметры запроса имеют некорректный формат")})
     @Operation(method = "можно забрать товар со склада", summary = "можно забрать товар со склада",
             description = "можно забрать товар со склада")
     @PutMapping
@@ -59,13 +55,11 @@ public class SocksStoreController {
     }
 
     @ApiResponses(value = {@ApiResponse(responseCode = "200",
-            description = "Всё хорошо, запрос выполнился"),
-            @ApiResponse(responseCode = "404",
-                    description = "URL неверный или такого действия нет в веб-приложении"),
+            description = "запрос выполнен, результат в теле ответа в виде строкового представления целого числа"),
             @ApiResponse(responseCode = "500",
-                    description = "Во время выполнения запроса произошла ошибка на сервере"),
+                    description = "произошла ошибка, не зависящая от вызывающей стороны"),
             @ApiResponse(responseCode = "400",
-                    description = "Есть ошибка в параметрах запроса")})
+                    description = "параметры запроса отсутствуют или имеют некорректный формат")})
     @Operation(method = "можно получить данные о товаре на складке: общее количество и данные по составу",
             summary = "можно получить данные о товаре на складке: общее количество и данные по составу",
             description = "можно получить данные о товаре на складке: общее количество и данные по составу")
@@ -77,13 +71,11 @@ public class SocksStoreController {
     }
 
     @ApiResponses(value = {@ApiResponse(responseCode = "200",
-            description = "Всё хорошо, запрос выполнился"),
-            @ApiResponse(responseCode = "404",
-                    description = "URL неверный или такого действия нет в веб-приложении"),
+            description = "запрос выполнен, товар списан со склада"),
             @ApiResponse(responseCode = "500",
-                    description = "Во время выполнения запроса произошла ошибка на сервере"),
+                    description = "произошла ошибка, не зависящая от вызывающей стороны"),
             @ApiResponse(responseCode = "400",
-                    description = "Есть ошибка в параметрах запроса")})
+                    description = "параметры запроса отсутствуют или имеют некорректный формат")})
     @Operation(method = "со склада можно списать бракованный товар",
             summary = "со склада можно списать бракованный товар",
             description = "со склада можно списать бракованный товар")
@@ -95,8 +87,6 @@ public class SocksStoreController {
 
     @ApiResponses(value = {@ApiResponse(responseCode = "200",
             description = "Всё хорошо, запрос выполнился"),
-            @ApiResponse(responseCode = "404",
-                    description = "URL неверный или такого действия нет в веб-приложении"),
             @ApiResponse(responseCode = "500",
                     description = "Во время выполнения запроса произошла ошибка на сервере"),
             @ApiResponse(responseCode = "400",
