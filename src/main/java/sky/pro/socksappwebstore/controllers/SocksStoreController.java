@@ -37,7 +37,7 @@ public class SocksStoreController {
     @PostMapping
     public ResponseEntity<ResponseDTO> postSocksContr(@RequestBody SocksBatch socksBatch) {
         socksService.accept(socksBatch);
-        return ResponseEntity.ok(new ResponseDTO(ResponseEntity.ok(socksBatch) + " Носки успешно добавлены на склад"));
+        return ResponseEntity.ok(new ResponseDTO(" Носки успешно добавлены на склад"));
     }
 
     @ApiResponses(value = {@ApiResponse(responseCode = "200",
