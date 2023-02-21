@@ -12,10 +12,11 @@ import sky.pro.socksappwebstore.model.Color;
 import sky.pro.socksappwebstore.model.Size;
 import sky.pro.socksappwebstore.model.Socks;
 import sky.pro.socksappwebstore.model.SocksBatch;
-import sky.pro.socksappwebstore.services.FileSocksService;
+
 import sky.pro.socksappwebstore.services.SocksService;
 
 import java.util.HashMap;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @Tag(name = "Контроллер управления перемещения носков", description = "POST PUT GET DELETE")
@@ -23,7 +24,7 @@ import java.util.HashMap;
 @RequestMapping("/api/socks")
 public class SocksStoreController {
     private final SocksService socksService;
-    private final FileSocksService fileSocksService;
+
 
     @ApiResponses(value = {@ApiResponse(responseCode = "200",
             description = "Всё хорошо, запрос выполнился"),
@@ -104,8 +105,8 @@ public class SocksStoreController {
             summary = "Все носки на  складе",
             description = "Все носки на  складе")
     @GetMapping("/allSocks")
-    public ResponseEntity<HashMap<Socks, Integer>> getAll() {
-        return ResponseEntity.ok(fileSocksService.getAll());
+    public ResponseEntity<Map<Socks, Integer>> getAll() {
+        return ResponseEntity.ok(socksService.getAll());
 
     }
 }

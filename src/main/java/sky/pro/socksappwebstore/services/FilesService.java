@@ -16,13 +16,6 @@ public interface FilesService {
 
     boolean deleteFile();
 
-    boolean saveToAllsocksFile(String json);
-
-    String readFromAllsocksFile();
-
-    boolean deleteAllsocksFile();
-
     File getSocksFile();
 
-    File getAllsocksFile();
 }

@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AllArgsConstructor;
 import org.apache.commons.io.IOUtils;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -24,15 +25,11 @@ import java.nio.file.Path;
 
 @Tag(name = "Контроллер export/import", description = "CRUD операции и другие эгдпоинты для выгрузки и загрузки файлов")
 @RestController
+@AllArgsConstructor
 @RequestMapping("/files")
 public class FilesController {
     private final FilesService filesService;
     private final SocksService socksService;
-
-    public FilesController(FilesService filesService, SocksService socksService) {
-        this.filesService = filesService;
-        this.socksService = socksService;
-    }
 
     @ApiResponses(value = {@ApiResponse(responseCode = "200",
             description = "Всё хорошо, запрос выполнился",
@@ -71,6 +68,7 @@ public class FilesController {
         }
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
+
     @ApiResponses(value = {@ApiResponse(responseCode = "200",
             description = "Всё хорошо, запрос выполнился")})
     @Operation(method = "export файла рецепта формат JSON.", summary = "Можете загрузить (принять) файл в формате json",
@@ -87,6 +85,7 @@ public class FilesController {
             return ResponseEntity.noContent().build();
         }
     }
+
     @ApiResponses(value = {@ApiResponse(responseCode = "200",
             description = "Всё хорошо, запрос выполнился",
             content = {@Content(mediaType = "text/plain")})})

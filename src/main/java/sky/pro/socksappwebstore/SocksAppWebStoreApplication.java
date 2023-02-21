@@ -9,5 +9,4 @@ public class SocksAppWebStoreApplication {
     public static void main(String[] args) {
         SpringApplication.run(SocksAppWebStoreApplication.class, args);
     }
-
 }
