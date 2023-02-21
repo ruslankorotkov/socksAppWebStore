@@ -15,7 +15,6 @@ import sky.pro.socksappwebstore.services.FilesService;
 import sky.pro.socksappwebstore.services.SocksService;
 import sky.pro.socksappwebstore.services.ValidationService;
 
-import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.file.Files;
@@ -35,7 +34,6 @@ public class SocksServiceImpl implements SocksService {
     @Override
     public void accept(SocksBatch socksBatch) {
         validationService.validate(socksBatch);
-        saveToFile();
         fileSocksService.save(socksBatch);
     }
 
@@ -69,27 +67,9 @@ public class SocksServiceImpl implements SocksService {
         return 0;
     }
 
-    public void saveToFile() {
-        try {
-            String json = new ObjectMapper().writeValueAsString(socksMap);
-            filesService.saveToFile(json);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void readFromFile() {
-        try {
-            String json = filesService.readFromFile();
-            socksMap = new ObjectMapper().readValue(json, new TypeReference<HashMap<Socks, Integer>>() {
-            });
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     @Override
-    public Path createAllRecipes() throws IOException {
+    public Path createAllSocks() throws IOException {
         Path path = filesService.getAllsocksFile().toPath();
         String listStop = "*";
         for (Map.Entry<Socks, Integer> element : socksMap.entrySet()) {
@@ -108,6 +88,15 @@ public class SocksServiceImpl implements SocksService {
         return path;
     }
 
+    public void readFromFile() {
+        try {
+            String json = filesService.readFromFile();
+            socksMap = new ObjectMapper().readValue(json, new TypeReference<HashMap<Socks, Integer>>() {
+            });
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
 //    @PostConstruct
 //    private void bim() {
 //        try {

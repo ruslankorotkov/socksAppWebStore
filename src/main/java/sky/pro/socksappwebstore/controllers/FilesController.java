@@ -67,67 +67,16 @@ public class FilesController {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
-            throw new ValidationException("Ошибка при выгрузке файла / uploadRecipeFile() ");
-        }
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-//        try (BufferedInputStream bis = new BufferedInputStream(file.getInputStream());
-//             FileOutputStream fos = new FileOutputStream(recipesFile);
-//             BufferedOutputStream bos = new BufferedOutputStream(fos);) {
-//            byte[]buffer = new byte[1024];
-//            while (bis.read(buffer)>0){
-//                bos.write(buffer);
-//            }
-//        } catch (FileNotFoundException e) {
-//            throw new RuntimeException(e);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-    }
-
-    @ApiResponses(value = {@ApiResponse(responseCode = "200",
-            description = "Всё хорошо, запрос выполнился",
-            content = {@Content(mediaType = "application/json")})})
-    @Operation(method = "export файла ингредиента формат json.", summary = "Можете загрузить (принять) файл формат json",
-            description = "Можно получить файл")
-    @GetMapping(value = "/export-allsocks")
-    public ResponseEntity<InputStreamResource> dowloadAllSocksFile() throws FileNotFoundException {
-        File file = filesService.getAllsocksFile();
-        if (file.exists()) {
-            InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
-            return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).contentLength(file.length())
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"AllSocksLog.json\"")
-                    .body(resource);
-        } else {
-            return ResponseEntity.noContent().build();
-        }
-    }
-
-    @ApiResponses(value = {@ApiResponse(responseCode = "200",
-            description = "Всё хорошо, запрос выполнился",
-            content = {@Content(mediaType = "application/json")})})
-    @Operation(method = "import файла ингредиента.", summary = "Можете выгрузить (отправить) файл",
-            description = "Можно отправить файл")
-    @PostMapping(value = "/import-allsocks", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<Void> uploadAllSocksFile(@RequestParam MultipartFile file) {
-        filesService.deleteAllsocksFile();
-        File ingredientsFile = filesService.getAllsocksFile();
-        try (FileOutputStream fos = new FileOutputStream(ingredientsFile)) {
-            IOUtils.copy(file.getInputStream(), fos);
-            return ResponseEntity.ok().build();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            throw new ValidationException("Ошибка при выгрузке файла / uploadIngredientsFile ");
+            throw new ValidationException("Ошибка при выгрузке файла / uploadSocksFile ");
         }
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
-
     @ApiResponses(value = {@ApiResponse(responseCode = "200",
             description = "Всё хорошо, запрос выполнился")})
     @Operation(method = "export файла рецепта формат JSON.", summary = "Можете загрузить (принять) файл в формате json",
             description = "Можно получить файл в формате JSON")
-    @GetMapping(value = "/export-allsockstxt")
-    public ResponseEntity<InputStreamResource> dowloadAllSocksFileTXT() throws FileNotFoundException {
+    @GetMapping(value = "/export-allsocks")
+    public ResponseEntity<InputStreamResource> dowloadAllSocksFileJson() throws FileNotFoundException {
         File file = filesService.getSocksFile();
         if (file.exists()) {
             InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
@@ -145,9 +94,9 @@ public class FilesController {
             summary = "Данные всех рецептов в формате txt, можете загрузить (принять) файл",
             description = "Можно получить (принять) данные в формате txt")
     @GetMapping("/export-AllSocks")
-    public ResponseEntity<Object> getAllRecipesExport() {
+    public ResponseEntity<Object> getAllSoocksExport() {
         try {
-            Path path = socksService.createAllRecipes();
+            Path path = socksService.createAllSocks();
             if (Files.size(path) == 0) {
                 return ResponseEntity.noContent().build();
             }
