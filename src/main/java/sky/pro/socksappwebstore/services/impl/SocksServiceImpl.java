@@ -33,14 +33,15 @@ public class SocksServiceImpl implements SocksService {
         this.filesService = filesService;
     }
 
-    //    @PostConstruct
-//    private void bim() {
-//        try {
-//            readFromFile();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+    @PostConstruct
+    private void bim() {
+        try {
+            filesService.readFromFile();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void accept(SocksBatch socksBatch) {
         validationService.validate(socksBatch);
@@ -84,14 +85,10 @@ public class SocksServiceImpl implements SocksService {
         String listStop = "*";
         for (Map.Entry<Socks, Integer> element : socksMap.entrySet()) {
             try (Writer writer = Files.newBufferedWriter(path, StandardOpenOption.APPEND)) {
-                writer.append("\n   ВРЕМЯ: " +
-                        element.getKey().getLocalDate() + "\n"
-                        + "\n   ЦВЕТ: " +
-                        element.getKey().getColor().name()).append("\n");
-                writer.append("\nРАЗМЕР:\n");
-                writer.append(listStop).append(element.getKey().getSize().name()).append("\n");
-                writer.append("\nКОЛИЧЕСТВО ПАР НОСКОВ:\n");
-                writer.append(listStop).append(element.getValue().toString()).append("\n");
+                writer.append("\n ВРЕМЯ: " + element.getKey().getLocalDate()).append("\n");
+                writer.append("\n ЦВЕТ: " + element.getKey().getColor().name()).append("\n");
+                writer.append("\n РАЗМЕР: " + element.getKey().getSize().name()).append("\n");
+                writer.append("\n КОЛИЧЕСТВО ПАР НОСКОВ: " + element.getValue().toString()).append("\n");
                 writer.append("\n");
             }
         }

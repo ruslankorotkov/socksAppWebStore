@@ -1,49 +1,27 @@
-{
-  "Socks{localDate=2023-02-21, size=S36_37, color=GREEN, cottonPart=40}": 17,
-  "Socks{localDate=2023-02-21, size=S36_37, color=RED, cottonPart=40}": 17,
-  "Socks{localDate=2023-02-21, size=S36_37, color=RED, cottonPart=60}": 50,
-  "Socks{localDate=2023-02-21, size=S36_37, color=RED, cottonPart=90}": 70
-}
-   ВРЕМЯ: 2023-02-21
+{"Socks{localDate=2023-02-22, size=S36_37, color=GREEN, cottonPart=30}":80,"Socks{localDate=2023-02-22, size=S36_37, color=RED, cottonPart=30}":80,"Socks{localDate=2023-02-22, size=S36_37, color=PINK, cottonPart=70}":80}
+   ВРЕМЯ: 2023-02-22
 
    ЦВЕТ: GREEN
 
-РАЗМЕР:
-*S36_37
+РАЗМЕР: S36_37
 
-КОЛИЧЕСТВО ПАР НОСКОВ:
-*17
+КОЛИЧЕСТВО ПАР НОСКОВ: 80
 
 
-   ВРЕМЯ: 2023-02-21
+   ВРЕМЯ: 2023-02-22
 
    ЦВЕТ: RED
 
-РАЗМЕР:
-*S36_37
+РАЗМЕР: S36_37
 
-КОЛИЧЕСТВО ПАР НОСКОВ:
-*17
+КОЛИЧЕСТВО ПАР НОСКОВ: 80
 
 
-   ВРЕМЯ: 2023-02-21
+   ВРЕМЯ: 2023-02-22
 
-   ЦВЕТ: RED
+   ЦВЕТ: PINK
 
-РАЗМЕР:
-*S36_37
+РАЗМЕР: S36_37
 
-КОЛИЧЕСТВО ПАР НОСКОВ:
-*50
-
-
-   ВРЕМЯ: 2023-02-21
-
-   ЦВЕТ: RED
-
-РАЗМЕР:
-*S36_37
-
-КОЛИЧЕСТВО ПАР НОСКОВ:
-*70
+КОЛИЧЕСТВО ПАР НОСКОВ: 80
 

@@ -79,7 +79,7 @@ public class FilesController {
         if (file.exists()) {
             InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
             return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).contentLength(file.length())
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"AllSocksTXTLog.json\"")
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"НоскиLog.json\"")
                     .body(resource);
         } else {
             return ResponseEntity.noContent().build();
