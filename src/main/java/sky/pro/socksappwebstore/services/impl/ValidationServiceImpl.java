@@ -15,15 +15,15 @@ public class ValidationServiceImpl implements ValidationService {
     public boolean validate(SocksBatch socksBatch) {
         try {
             Validate.notBlank(socksBatch.getSocks().getSize().name(),
-                    "Ошибка валидации размера / Size");
+                    "Ошибка валидации размера / size");
             Validate.notBlank(socksBatch.getSocks().getColor().name(),
-                    "Ошибка валидации цвета / Color");
+                    "Ошибка валидации цвета / color");
             Validate.notNull(socksBatch.getSocks().getCottonPart(),
-                    "Ошибка валидации содержания хлопка / CottonPart");
+                    "Ошибка валидации содержания хлопка / cottonPart");
             Validate.notNull(socksBatch.getSocks(),
                     "Ошибка валидации класса Socks / Socks");
-            Validate.validState(socksBatch.getTotalQuantity() > 0,
-                    "Ошибка валидации количества носков (должно быть больше 0) / TotalQuantity");
+            Validate.validState(socksBatch.getQuantity() > 0,
+                    "Ошибка валидации количества носков (должно быть больше 0) / quantity");
             Validate.validState(checkCotton(socksBatch.getSocks().getCottonPart(),
                     socksBatch.getSocks().getCottonPart()));
         } catch (Exception e) {
@@ -36,9 +36,9 @@ public class ValidationServiceImpl implements ValidationService {
     public boolean validate(Color color, Size size, int cottonMin, int cottonMax) {
         try {
             Validate.notBlank(size.name(),
-                    "Ошибка валидации размера / Size");
+                    "Ошибка валидации размера / size");
             Validate.notBlank(color.name(),
-                    "Ошибка валидации цвета / Color");
+                    "Ошибка валидации цвета / color");
             Validate.validState(cottonMin >= 0,
                     "Ошибка валидации минимального содержания хлопка cottonMin >= 0 / cottonMin");
             Validate.validState(cottonMax <= 100,

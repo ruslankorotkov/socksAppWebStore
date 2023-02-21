@@ -1,64 +1,58 @@
 [
   {
-    "socks": "носки",
-    "colors": [
-      {
-        "color": "чёрный",
-        "measure": "цвет"
-      },
-      {
-        "color": "красный",
-        "measure": "цвет"
-      },
-      {
-        "color": "жёлтый",
-        "measure": "цвет"
-      },
-      {
-        "color": "синий",
-        "measure": "цвет"
-      }
-    ],
-    "sizes": [
-      {
-        "size": 36.0,
-        "measure": "Размер"
-      },
-      {
-        "size": 36.5,
-        "measure": "Размер"
-      },
-      {
-        "size": 37.0,
-        "measure": "Размер"
-      },
-      {
-        "size": 37.5,
-        "measure": "Размер"
-      }
-    ],
-    "cottonPart": [
-      {
-        "cotton": 30,
-        "measure": "процентов"
-      },
-      {
-        "cotton": 18,
-        "measure": "процентов"
-      },
-      {
-        "cotton": 42,
-        "measure": "процентов"
-      },
-      {
-        "cotton": 100,
-        "measure": "процентов"
-      }
-    ],
-    "quantity": {
-      "number": "количество пар носков на складе",
-      "cotton": 25,
-      "measure": "шт."
-    }
+    "socks": {
+      "size": "S36_37",
+      "color": "RED",
+      "cottonPart": 70
+    },
+    "quantity": 107
+  },
+  {
+    "socks": {
+      "size": "XL44_46",
+      "color": "GREEN",
+      "cottonPart": 70
+    },
+    "quantity": 10
+  },
+  {
+    "socks": {
+      "size": "S36_37",
+      "color": "PINK",
+      "cottonPart": 70
+    },
+    "quantity": 31
+  },
+  {
+    "socks": {
+      "size": "S36_37",
+      "color": "ORANGE",
+      "cottonPart": 90
+    },
+    "quantity": 18
+  },
+  {
+    "socks": {
+      "size": "M38_40",
+      "color": "BLACK",
+      "cottonPart": 99
+    },
+    "quantity": 4
+  },
+  {
+    "socks": {
+      "size": "M38_40",
+      "color": "COQUELICOT",
+      "cottonPart": 100
+    },
+    "quantity": 10
+  },
+  {
+    "socks": {
+      "size": "XXL47_48",
+      "color": "FOLLY",
+      "cottonPart": 30
+    },
+    "quantity": 170
   }
 ]
