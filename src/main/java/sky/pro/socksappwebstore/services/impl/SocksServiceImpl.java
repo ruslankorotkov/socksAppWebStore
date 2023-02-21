@@ -35,8 +35,8 @@ public class SocksServiceImpl implements SocksService {
     @Override
     public void accept(SocksBatch socksBatch) {
         validationService.validate(socksBatch);
-        fileSocksService.save(socksBatch);
         saveToFile();
+        fileSocksService.save(socksBatch);
     }
 
     @Override
@@ -68,6 +68,7 @@ public class SocksServiceImpl implements SocksService {
         }
         return 0;
     }
+
     public void saveToFile() {
         try {
             String json = new ObjectMapper().writeValueAsString(socksMap);
@@ -80,41 +81,39 @@ public class SocksServiceImpl implements SocksService {
     public void readFromFile() {
         try {
             String json = filesService.readFromFile();
-            socksMap = new ObjectMapper().readValue(json, new TypeReference<HashMap<Socks,Integer>>() {
+            socksMap = new ObjectMapper().readValue(json, new TypeReference<HashMap<Socks, Integer>>() {
             });
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
     }
+
     @Override
     public Path createAllRecipes() throws IOException {
         Path path = filesService.getAllsocksFile().toPath();
         String listStop = "*";
-        for (Integer element : socksMap.values()) {
+        for (Map.Entry<Socks, Integer> element : socksMap.entrySet()) {
             try (Writer writer = Files.newBufferedWriter(path, StandardOpenOption.APPEND)) {
-                writer.append(element.getTitle() + "\n"
-                        + "\nВремя приготовления: " +
-                        element.getCookingTime()).append(" минут\n");
-
-                writer.append("\nИнгредиенты:\n");
-                for (Ingredient ele : element.getIngredients()) {
-                    writer.append(listStop).append(ele.toString()).append("\n");
-                }
-                writer.append("\nИнструкция приготовления:\n");
-                for (Step elem : element.getCookingInstructionsSteps()) {
-                    writer.append(listStop).append(elem.toString()).append("\n");
-                }
+                writer.append("\n   ВРЕМЯ: " +
+                        element.getKey().getLocalDate() + "\n"
+                        + "\n   ЦВЕТ: " +
+                        element.getKey().getColor().name()).append("\n");
+                writer.append("\nРАЗМЕР:\n");
+                writer.append(listStop).append(element.getKey().getSize().name()).append("\n");
+                writer.append("\nКОЛИЧЕСТВО ПАР НОСКОВ:\n");
+                writer.append(listStop).append(element.getValue().toString()).append("\n");
                 writer.append("\n");
             }
         }
         return path;
     }
-@PostConstruct
-private void bim() {
-    try {
-        readFromFile();
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-}
+
+//    @PostConstruct
+//    private void bim() {
+//        try {
+//            readFromFile();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

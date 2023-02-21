@@ -123,28 +123,28 @@ public class FilesController {
     }
 
     @ApiResponses(value = {@ApiResponse(responseCode = "200",
-            description = "Всё хорошо, запрос выполнился",
-            content = {@Content(mediaType = "plain/txt")})})
-    @Operation(method = "export файла рецепта формат txt.", summary = "Можете загрузить (принять) файл в формате txt",
-            description = "Можно получить файл в формате txt")
+            description = "Всё хорошо, запрос выполнился")})
+    @Operation(method = "export файла рецепта формат JSON.", summary = "Можете загрузить (принять) файл в формате json",
+            description = "Можно получить файл в формате JSON")
     @GetMapping(value = "/export-allsockstxt")
     public ResponseEntity<InputStreamResource> dowloadAllSocksFileTXT() throws FileNotFoundException {
         File file = filesService.getSocksFile();
         if (file.exists()) {
             InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
-            return ResponseEntity.ok().contentType(MediaType.TEXT_PLAIN).contentLength(file.length())
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"AllSocksTXTLog.txt\"")
+            return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).contentLength(file.length())
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"AllSocksTXTLog.json\"")
                     .body(resource);
         } else {
             return ResponseEntity.noContent().build();
         }
     }
     @ApiResponses(value = {@ApiResponse(responseCode = "200",
-            description = "Всё хорошо, запрос выполнился")})
-    @Operation(method = "Данные всех рецептов в формате JSON.",
-            summary = "Данные всех рецептов в формате JSON, можете загрузить (принять) файл",
-            description = "Можно получить (принять) данные в формате JSON")
-    @GetMapping("/AllRecipes")
+            description = "Всё хорошо, запрос выполнился",
+            content = {@Content(mediaType = "text/plain")})})
+    @Operation(method = "Данные всех рецептов в формате txt.",
+            summary = "Данные всех рецептов в формате txt, можете загрузить (принять) файл",
+            description = "Можно получить (принять) данные в формате txt")
+    @GetMapping("/export-AllSocks")
     public ResponseEntity<Object> getAllRecipesExport() {
         try {
             Path path = socksService.createAllRecipes();
@@ -152,8 +152,8 @@ public class FilesController {
                 return ResponseEntity.noContent().build();
             }
             InputStreamResource resource = new InputStreamResource(new FileInputStream(path.toFile()));
-            return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).contentLength(Files.size(path))
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"AllRecipes.json\"")
+            return ResponseEntity.ok().contentType(MediaType.TEXT_PLAIN).contentLength(Files.size(path))
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"SocksAll.txt\"")
                     .body(resource);
         } catch (IOException e) {
             e.printStackTrace();

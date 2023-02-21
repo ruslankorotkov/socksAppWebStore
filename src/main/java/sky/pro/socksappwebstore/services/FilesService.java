@@ -16,7 +16,7 @@ public interface FilesService {
 
     boolean deleteFile();
 
-    boolean saveToIngredientsFile(String json);
+    boolean saveToAllsocksFile(String json);
 
     String readFromAllsocksFile();
 

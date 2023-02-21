@@ -55,8 +55,9 @@ public class FilesServiceImpl implements FilesService {
         }
     }
 
+
     @Override
-    public boolean saveToIngredientsFile(String json) {
+    public boolean saveToAllsocksFile(String json) {
         try {
             deleteAllsocksFile();
             Files.writeString(Path.of(allsocksFilePath, allsocksFileName), json);
