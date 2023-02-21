@@ -32,7 +32,8 @@ public class SocksServiceImpl implements SocksService {
         this.validationService = validationService;
         this.filesService = filesService;
     }
-//    @PostConstruct
+
+    //    @PostConstruct
 //    private void bim() {
 //        try {
 //            readFromFile();
@@ -98,7 +99,6 @@ public class SocksServiceImpl implements SocksService {
     }
 
 
-
     @Override
     public void save(SocksBatch socksBatch) {
         Socks socks = socksBatch.getSocks();
@@ -118,7 +118,7 @@ public class SocksServiceImpl implements SocksService {
         if (socksMap.containsKey(socks)) {
             int totalQuantity = socksMap.get(socks);
             if (totalQuantity > socksBatch.getQuantity()) {
-                socksMap.replace(socks, socksMap.get(socks) - socksBatch.getQuantity());
+                socksMap.replace(socks, totalQuantity - socksBatch.getQuantity());
                 saveToFile();
                 return socksBatch.getQuantity();
             } else {
@@ -142,6 +142,7 @@ public class SocksServiceImpl implements SocksService {
             throw new RuntimeException(e);
         }
     }
+
     public void readFromFile() {
         try {
             String json = filesService.readFromFile();

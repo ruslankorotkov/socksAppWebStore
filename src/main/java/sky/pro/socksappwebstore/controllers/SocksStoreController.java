@@ -97,6 +97,5 @@ public class SocksStoreController {
     @GetMapping("/allSocks")
     public ResponseEntity<Map<Socks, Integer>> getAll() {
         return ResponseEntity.ok(socksService.getAll());
-
     }
 }

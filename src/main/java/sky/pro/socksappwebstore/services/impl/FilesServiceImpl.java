@@ -55,4 +55,5 @@ public class FilesServiceImpl implements FilesService {
     public File getSocksFile() {
         return new File(socksFilePath + "/" + socksFileName);
     }
+
 }

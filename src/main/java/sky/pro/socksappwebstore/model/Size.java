@@ -13,5 +13,4 @@ public enum Size {
     L41_43,
     XL44_46,
     XXL47_48
-
 }

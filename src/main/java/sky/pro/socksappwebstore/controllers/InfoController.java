@@ -31,5 +31,6 @@ public class InfoController {
                 "<h4><center>название проекта: socksAppWebStore</center></h4>" +
                 "<h5><center>дата создания проекта: 17/02/2023 </center></h5>" +
                 "<h6><center>описание проекта: веб-приложения для склада интернет-магазина носков</center></h6>";
+
     }
 }
