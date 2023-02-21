@@ -1,4 +1,4 @@
-package sky.pro.socksappwebstore.controllers;
+package sky.pro.socksappwebstore.exceptionhandler;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +11,5 @@ public class ApiExceptionController {
     @ExceptionHandler
     public ResponseEntity<String> handlerValidationException(ValidationException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-
     }
 }
