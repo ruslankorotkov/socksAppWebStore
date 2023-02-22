@@ -102,7 +102,6 @@ public class SocksServiceImpl implements SocksService {
             socksMap.put(socks, socksBatch.getQuantity());
             saveToFile();
         }
-
     }
 
     @Override
