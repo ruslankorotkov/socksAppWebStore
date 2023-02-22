@@ -3,6 +3,7 @@ package sky.pro.socksappwebstore.services.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import sky.pro.socksappwebstore.exception.ValidationException;
 import sky.pro.socksappwebstore.model.Color;
@@ -23,24 +24,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
+@AllArgsConstructor
 public class SocksServiceImpl implements SocksService {
     private static Map<Socks, Integer> socksMap = new HashMap<>();
     private final ValidationService validationService;
     private final FilesService filesService;
 
-    public SocksServiceImpl(ValidationService validationService, FilesService filesService) {
-        this.validationService = validationService;
-        this.filesService = filesService;
-    }
-
-    @PostConstruct
-    private void init() {
-        try {
-            readFromFile();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    @PostConstruct
+//    private void init() {
+//        try {
+//            readFromFile();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     @Override
     public void accept(SocksBatch socksBatch) {
@@ -82,7 +79,6 @@ public class SocksServiceImpl implements SocksService {
     @Override
     public Path createAllSocks() throws IOException {
         Path path = filesService.getSocksFile().toPath();
-        String listStop = "*";
         for (Map.Entry<Socks, Integer> element : socksMap.entrySet()) {
             try (Writer writer = Files.newBufferedWriter(path, StandardOpenOption.APPEND)) {
                 writer.append("\n ВРЕМЯ: " + element.getKey().getLocalDate()).append("\n");
