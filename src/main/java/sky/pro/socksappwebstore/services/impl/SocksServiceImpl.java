@@ -142,6 +142,7 @@ public class SocksServiceImpl implements SocksService {
             });
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
+
         }
     }
 }
