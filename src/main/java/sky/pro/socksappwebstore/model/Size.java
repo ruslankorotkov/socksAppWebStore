@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 
 @AllArgsConstructor
-
 public enum Size {
     S36_37,
     M38_40,

@@ -70,23 +70,6 @@ public class FilesController {
     }
 
     @ApiResponses(value = {@ApiResponse(responseCode = "200",
-            description = "Всё хорошо, запрос выполнился")})
-    @Operation(method = "export файла рецепта формат JSON.", summary = "Можете загрузить (принять) файл в формате json",
-            description = "Можно получить файл в формате JSON")
-    @GetMapping(value = "/export-allsocks")
-    public ResponseEntity<InputStreamResource> dowloadAllSocksFileJson() throws FileNotFoundException {
-        File file = filesService.getSocksFile();
-        if (file.exists()) {
-            InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
-            return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).contentLength(file.length())
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"НоскиLog.json\"")
-                    .body(resource);
-        } else {
-            return ResponseEntity.noContent().build();
-        }
-    }
-
-    @ApiResponses(value = {@ApiResponse(responseCode = "200",
             description = "Всё хорошо, запрос выполнился",
             content = {@Content(mediaType = "text/plain")})})
     @Operation(method = "Данные всех рецептов в формате txt.",

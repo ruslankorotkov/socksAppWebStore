@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SocksBatch {
     private Socks socks;
-    private Integer quantity;
+    private int quantity;
 
 }

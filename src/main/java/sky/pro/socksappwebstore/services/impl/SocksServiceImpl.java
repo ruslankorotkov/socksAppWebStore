@@ -34,9 +34,9 @@ public class SocksServiceImpl implements SocksService {
     }
 
     @PostConstruct
-    private void bim() {
+    private void init() {
         try {
-            filesService.readFromFile();
+            readFromFile();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -140,13 +140,13 @@ public class SocksServiceImpl implements SocksService {
         }
     }
 
-//    public void readFromFile() {
-//        try {
-//            String json = filesService.readFromFile();
-//            socksMap = new ObjectMapper().readValue(json, new TypeReference<Map<Socks, Integer>>() {
-//            });
-//        } catch (JsonProcessingException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    public void readFromFile() {
+        try {
+            String json = filesService.readFromFile();
+            socksMap = new ObjectMapper().readValue(json, new TypeReference<HashMap<Socks, Integer>>() {
+            });
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

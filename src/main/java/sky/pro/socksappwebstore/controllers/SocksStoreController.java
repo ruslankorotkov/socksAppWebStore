@@ -51,7 +51,7 @@ public class SocksStoreController {
     @PutMapping
     public ResponseEntity<ResponseDTO> putSocksContr(@RequestBody SocksBatch socksBatch) {
         int socksCount = socksService.issuence(socksBatch);
-        return ResponseEntity.ok(new ResponseDTO("Успешно забрано на складе " + socksCount + " пар носков"));
+        return ResponseEntity.ok(new ResponseDTO("Успешно забрано со склада " + socksCount + " пар носков"));
     }
 
     @ApiResponses(value = {@ApiResponse(responseCode = "200",

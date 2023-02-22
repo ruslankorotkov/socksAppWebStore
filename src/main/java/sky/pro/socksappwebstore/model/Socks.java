@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Data
+@NoArgsConstructor
 public class Socks {
     private LocalDate localDate;
     private Size size;
