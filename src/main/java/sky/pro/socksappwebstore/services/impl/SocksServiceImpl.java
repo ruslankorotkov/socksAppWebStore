@@ -6,10 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import sky.pro.socksappwebstore.exception.ValidationException;
-import sky.pro.socksappwebstore.model.Color;
-import sky.pro.socksappwebstore.model.Size;
-import sky.pro.socksappwebstore.model.Socks;
-import sky.pro.socksappwebstore.model.SocksBatch;
+import sky.pro.socksappwebstore.model.*;
 import sky.pro.socksappwebstore.services.FilesService;
 import sky.pro.socksappwebstore.services.SocksService;
 import sky.pro.socksappwebstore.services.ValidationService;
@@ -30,14 +27,15 @@ public class SocksServiceImpl implements SocksService {
     private final ValidationService validationService;
     private final FilesService filesService;
 
-//    @PostConstruct
-//    private void init() {
-//        try {
-//            readFromFile();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+
+    @PostConstruct
+    private void bim() {
+        try {
+            readFromFile();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void accept(SocksBatch socksBatch) {
@@ -81,7 +79,7 @@ public class SocksServiceImpl implements SocksService {
         Path path = filesService.getSocksFile().toPath();
         for (Map.Entry<Socks, Integer> element : socksMap.entrySet()) {
             try (Writer writer = Files.newBufferedWriter(path, StandardOpenOption.APPEND)) {
-                writer.append("\n ВРЕМЯ: " + element.getKey().getLocalDate()).append("\n");
+//                writer.append("\n ВРЕМЯ: " + element.getKey().getLocalDate()).append("\n");
                 writer.append("\n ЦВЕТ: " + element.getKey().getColor().name()).append("\n");
                 writer.append("\n РАЗМЕР: " + element.getKey().getSize().name()).append("\n");
                 writer.append("\n КОЛИЧЕСТВО ПАР НОСКОВ: " + element.getValue().toString()).append("\n");
@@ -142,7 +140,6 @@ public class SocksServiceImpl implements SocksService {
             });
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
-
         }
     }
 }

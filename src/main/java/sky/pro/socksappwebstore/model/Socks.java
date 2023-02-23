@@ -11,7 +11,7 @@ import java.util.Objects;
 @Data
 @AllArgsConstructor
 public class Socks {
-    private LocalDate localDate;
+//    private LocalDate localDate;
     private Size size;
     private Color color;
     private int cottonPart;

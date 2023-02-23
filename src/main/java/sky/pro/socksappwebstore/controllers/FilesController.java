@@ -34,8 +34,8 @@ public class FilesController {
     @ApiResponses(value = {@ApiResponse(responseCode = "200",
             description = "Всё хорошо, запрос выполнился",
             content = {@Content(mediaType = "application/json")})})
-    @Operation(method = "export файла рецепта формат json.", summary = "Можете загрузить (принять) файл формат json",
-            description = "Можно получить файл")
+    @Operation(method = "export файла socks формат json.", summary = "Можете загрузить (принять) файл формат json",
+            description = "Можно получить файл socks")
     @GetMapping(value = "/export-socks")
     public ResponseEntity<InputStreamResource> downloadSocksFile() throws FileNotFoundException {
         File file = filesService.getSocksFile();
@@ -52,13 +52,13 @@ public class FilesController {
     @ApiResponses(value = {@ApiResponse(responseCode = "200",
             description = "Всё хорошо, запрос выполнился",
             content = {@Content(mediaType = "application/json")})})
-    @Operation(method = "import файла рецепта.", summary = "Можете выгрузить (отправить) файл",
-            description = "Можно отправить файл")
+    @Operation(method = "import файла socks.", summary = "Можете выгрузить (отправить) файл socks",
+            description = "Можно отправить файл socks")
     @PostMapping(value = "/import-socks", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Void> uploadSocksFile(@RequestParam MultipartFile file) {
         filesService.deleteFile();
-        File recipesFile = filesService.getSocksFile();
-        try (FileOutputStream fos = new FileOutputStream(recipesFile)) {
+        File socksFiles = filesService.getSocksFile();
+        try (FileOutputStream fos = new FileOutputStream(socksFiles)) {
             IOUtils.copy(file.getInputStream(), fos);
             return ResponseEntity.ok().build();
         } catch (FileNotFoundException e) {
@@ -72,8 +72,8 @@ public class FilesController {
     @ApiResponses(value = {@ApiResponse(responseCode = "200",
             description = "Всё хорошо, запрос выполнился",
             content = {@Content(mediaType = "text/plain")})})
-    @Operation(method = "Данные всех рецептов в формате txt.",
-            summary = "Данные всех рецептов в формате txt, можете загрузить (принять) файл",
+    @Operation(method = "Данные socks в формате txt.",
+            summary = "Данные socks в формате txt, можете загрузить (принять) файл socks",
             description = "Можно получить (принять) данные в формате txt")
     @GetMapping("/export-AllSocks")
     public ResponseEntity<Object> getAllSoocksExport() {
