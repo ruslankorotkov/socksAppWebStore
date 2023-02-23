@@ -28,14 +28,14 @@ public class SocksServiceImpl implements SocksService {
     private final FilesService filesService;
 
 
-    @PostConstruct
-    private void bim() {
-        try {
-            readFromFile();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    @PostConstruct
+//    private void bim() {
+//        try {
+//            readFromFile();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     @Override
     public void accept(SocksBatch socksBatch) {
@@ -106,15 +106,15 @@ public class SocksServiceImpl implements SocksService {
     public int remove(SocksBatch socksBatch) {
         Socks socks = socksBatch.getSocks();
         if (socksMap.containsKey(socks)) {
-            int totalQuantity = socksMap.get(socks);
-            if (totalQuantity > socksBatch.getQuantity()) {
-                socksMap.replace(socks, totalQuantity - socksBatch.getQuantity());
+            int quantity = socksMap.get(socks);
+            if (quantity > socksBatch.getQuantity()) {
+                socksMap.replace(socks, quantity - socksBatch.getQuantity());
                 saveToFile();
                 return socksBatch.getQuantity();
             } else {
                 socksMap.remove(socks);
                 saveToFile();
-                return totalQuantity;
+                return quantity;
             }
         }
         return 0;

@@ -91,9 +91,9 @@ public class SocksStoreController {
                     description = "Во время выполнения запроса произошла ошибка на сервере"),
             @ApiResponse(responseCode = "400",
                     description = "Есть ошибка в параметрах запроса")})
-    @Operation(method = "Все носки на  складе",
-            summary = "Все носки на  складе",
-            description = "Все носки на  складе")
+    @Operation(method = "Список носков на складе",
+            summary = "Список носков на складе",
+            description = "Список носков на складе")
     @GetMapping("/allSocks")
     public ResponseEntity<Map<Socks, Integer>> getAll() {
         return ResponseEntity.ok(socksService.getAll());
