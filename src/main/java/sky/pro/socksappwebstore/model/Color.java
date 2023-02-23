@@ -2,8 +2,9 @@ package sky.pro.socksappwebstore.model;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@NoArgsConstructor
 public enum Color {
     RED,
     ORANGE,
